@@ -6,10 +6,10 @@
   * @author Oscar Ivan Muñoz Barajas( Slack )
   * @version 0.0.2
 */
-    var express       =       require( 'express' );// Se carga el modulo de express
-    var app           =       express();// se asigna express para su uso posteriormente
-    var servidor      =       require( '../servs/serv.js' );
-    var path          =       require( 'path' );
+    const express       =       require( 'express' );// Se carga el modulo de express
+    const app           =       express();// se asigna express para su uso posteriormente
+    const servidor      =       require( '../servs/serv.js' );
+    const path          =       require( 'path' );
 
     // view engine setup
     // se hace el acomodo de los ficheros estaticos, asi como de donde abrira(carpeta) las vistas
@@ -33,4 +33,4 @@
       res.status( 404 ).send( "What??? You don´t have power here!!!." );
     });
     // se inicia el servidor especificando el puerto 8081, y pasandole de parametro la variable app
-    servidor.serv( app, '8081' );
+    servidor.serv( app, '911' );

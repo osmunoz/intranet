@@ -28,6 +28,7 @@
         "uikit": "3.0.0-beta.35",
         "nodemon": "1.14.6",
         "url": "0.11.0",
-        "angular-route": "1.6.8"
+        "angular-route": "1.6.8",
+        "express-fileupload": "0.3.0"
     }
 }

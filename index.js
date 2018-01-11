@@ -7,5 +7,4 @@
   * @version 0.0.1
 */
   // se exporta el modulo donde se encuentra el router
-  console.log( __dirname );
-  var router        =         require( './application/routers/route' );
+  const router        =         require( './application/routers/route' );
