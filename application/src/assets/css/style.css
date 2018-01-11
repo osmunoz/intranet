@@ -1,0 +1,22 @@
+.centrando { margin-left: 30%; }
+.bajando {
+  margin-top: 15%;
+  z-index: 2;
+}
+body{
+  background-color: black;
+  background-image: url( '../img/NDP3.jpg' );
+}
+.backgroundImage {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-image: url( '../img/NDP3.jpg' );
+  background-size: cover;
+  display: block;
+  filter: blur( 6px );
+  -webkit-filter: blur( 6px );
+  -moz-filter: blur( 6px );
+  -ms-filter: blur( 6px );
+}
