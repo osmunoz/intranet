@@ -12,17 +12,14 @@
     const path          =       require( 'path' );
     const hbs           =       require( 'express-hbs' );
 
-    // view engine setup
-    // se hace el acomodo de los ficheros estaticos, asi como de donde abrira(carpeta) las vistas
-    //views
-    //app.use( express.static( path.join( __dirname, '../src' ) ) );
     //configuracion para cargar la carpeta donde se encontraran los archivos estaticos
       app.use( '/', express.static( path.join( __dirname, '../src/assets' ) ));
-    // se le dice el tipo de extension que debe de leer
-    //app.set( 'views', __dirname + '/../src' );
-    //app.set( 'view engine', 'html' );
+
+    /**
+       * Esta funcion, es para decirle que plantilla tomara, y cual vista debe de usar
+       * @author Slack
+     */
     var routeViews = function( plantilla, carpeta ){
-        console.log('AQUI '+ path.join( __dirname + '../src/view/'+carpeta ) );
         app.set( 'views', path.join( __dirname + '/../src/view/'+carpeta ) );
         app.set( 'view engine', 'hbs' );
         app.engine( 'hbs', hbs.express4({
@@ -35,7 +32,11 @@
       routeViews( 'login', 'login' );
       res.render('login_view');
     });
-
+    //URL para crear una cuenta nueva
+    app.get( '/crear-cuenta', function( req, res ){
+      routeViews( 'template_base', 'addUser' );
+      res.render( 'addingUser' );
+    });
     // cuando se intente entrar a una ruta, que no se este especificando en este modulo, mandara al siguiente error
     app.get( '*', function( req, res ){
       res.status( 404 ).send( "What??? You don´t have power here!!!." );
