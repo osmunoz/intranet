@@ -10,22 +10,30 @@
     const app           =       express();// se asigna express para su uso posteriormente
     const servidor      =       require( '../servs/serv.js' );
     const path          =       require( 'path' );
+    const hbs           =       require( 'express-hbs' );
 
     // view engine setup
     // se hace el acomodo de los ficheros estaticos, asi como de donde abrira(carpeta) las vistas
     //views
-    app.use( express.static( path.join( __dirname, '../src' ) ) );
+    //app.use( express.static( path.join( __dirname, '../src' ) ) );
     //configuracion para cargar la carpeta donde se encontraran los archivos estaticos
-    app.use( '/', express.static( path.join( __dirname, '../src/assets' ) ), function(){
-      console.log("Here again!!!");
-    });
+      app.use( '/', express.static( path.join( __dirname, '../src/assets' ) ));
     // se le dice el tipo de extension que debe de leer
-    app.set( 'views', __dirname + '/../src' );
-    app.set( 'view engine', 'html' );
-
+    //app.set( 'views', __dirname + '/../src' );
+    //app.set( 'view engine', 'html' );
+    var routeViews = function( plantilla, carpeta ){
+        console.log('AQUI '+ path.join( __dirname + '../src/view/'+carpeta ) );
+        app.set( 'views', path.join( __dirname + '/../src/view/'+carpeta ) );
+        app.set( 'view engine', 'hbs' );
+        app.engine( 'hbs', hbs.express4({
+          defaultLayout: path.join( __dirname + ' /../src/view/templates/'+plantilla+'.hbs' ),
+          extname: '.hbs'
+        } ) );
+    };
     // cuando entre a localhost:8081/ abrira la siguiente pagina
     app.get( '/', function( req, res ){
-      res.render( '/src/index.html' );
+      routeViews( 'login', 'login' );
+      res.render('login_view');
     });
 
     // cuando se intente entrar a una ruta, que no se este especificando en este modulo, mandara al siguiente error

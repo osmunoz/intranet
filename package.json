@@ -30,6 +30,7 @@
         "url": "0.11.0",
         "angular-route": "1.6.8",
         "express-fileupload": "0.3.0",
-        "handlebars": "4.0.11"
+        "handlebars": "4.0.11",
+        "express-hbs": "1.0.4"
     }
 }
