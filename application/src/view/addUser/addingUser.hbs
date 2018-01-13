@@ -1,1 +1,77 @@
-<h1>911!</h1>
+<div class="container-fluid">
+  <div class="row align-items-center justify-content-center">
+    <div class="col col-lg-2"></div>
+    <div class="col-md-auto">
+      <h3>
+        <span class="alert alert-warning">Recuerde</span>
+        <small class="text-muted">Que la imagen que subira acontinuación solo puede ser la institucional</small>
+      </h3>
+    </div>
+    <div class="col col-lg-2"></div>
+  </div><br>
+  <!-- -->
+</div>
+<div class="container-fluid">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active color-nav" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Datos personales</a>
+      <a class="nav-item nav-link color-nav" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Datos de la empresa</a>
+    </div>
+  </nav>
+  <div class="tab-content color-content" id="nav-tabContent">
+    <!-- Inicio del primer contenido-->
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <form>
+          <div class="form-row">
+              <div class="col col-lg-2">
+                <img class="rounded img-fluid" src="/img/user.png" alt="Registro usuario" /><br>
+                <input type="file">
+              </div><!-- Fin upload foto-->
+                <div class="col">
+                  <div class="form-group">
+                    <label for="nombreUsuario">Nombre completo</label>
+                    <input type="text" class="form-control" id="nombreUsuario" aria-describedby="Nombre" placeholder="Nombre usuario completo" />
+                  </div>
+                </div><!-- Fin formulario -->
+              <div class="col"></div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="nEmpleado">N° de empleado</label>
+                <input type="text" class="form-control" id="nEmpleado" aria-describedby="N° Empleado" placeholder="N°" />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="nacimiento">Fecha de nacimiento</label>
+                <input type="date" class="form-control" id="nacimiento" aria-describedby="Fecha de nacimiento" placeholder="Fecha" />
+              </div>
+            </div>
+            <div class="col">
+              Sexo:
+              <div class="form-group">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="h" class="form-control" id="hombre" autocomplete="off" checked>Hombre
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="m" class="form-control" id="mujer" autocomplete="off">Mujer
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" class="form-control" id="direccion" aria-describedby="Direccion" placeholder="direccion" />
+              </div>
+            </div>
+            <div class="col"></div>
+          </div>
+        </form>
+    </div><!-- Tab pane fade 1-->
+    <!-- FIn DEL PRIMER CONTENIDO-->
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+  </div>
+</div><!-- container del nav-->
