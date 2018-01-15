@@ -1,6 +1,15 @@
 footer{
   background-color: black;
-  height: 175px;
 }
-.color-nav{ background-color: #95A5A6; }
-.color-content{ background-color: #BDC3C7; }
+.formulario{
+  border: 2px solid #15B0B9;
+  padding: 20 35 20 35;
+  background-color: #03B3BD;
+  color: white;
+}
+.formulario input{ background-color: #3AE8F2; }
+.formulario select { background-color: #3AE8F2; }
+.btn-guardar{   background-color: #0510F8; color: white; }
+.btn-guardar:hover { background-color: #08BA30; color: white; }
+.btn-cancelar { background-color: #F15E1F; color: white; }
+.btn-cancelar:hover { background-color: #F1F11F; color:white; }
