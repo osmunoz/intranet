@@ -9,6 +9,7 @@
       idPuesto: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         validate:{
           notNull: true,
           isInt: true,
@@ -30,6 +31,12 @@
         type: DataTypes.STRING,
         validate: {
           notNull: true
+        }
+      }
+    },{
+      classMethod:{
+        associate: function(models){
+          puesto.hasOne( models.Departamento, { foreingKey: 'idDepto' })
         }
       }
     },{

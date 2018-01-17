@@ -11,6 +11,7 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement:true,
+        autoIncrement:true,
         validate: {
           notNull: true,
           isNumeric: true,
@@ -123,6 +124,15 @@
           msg:'Este cambio, \'numeroIMSS\' debe de ser unico, valor repetido'
         },
         validate:{ notNull:true }
+      }
+    },{
+      classMethods:{
+        associate: function( models ){
+          usuario.hasOne( models.Acceso, { foreingKey: 'idAcceso' })
+          usuario.hasMany( models.Escolaridad, { as: 'Escolaridades', foreingKey: 'idEscolaridad'})
+          usuario.hasMany( models.Examen, { as:'Examanes', foreingKey: 'idExamen'})
+          usuario.hasOne( models.Puesto, { foreingKey: 'idPuesto' } )
+        }
       }
     },{
       timestamps: true,

@@ -9,6 +9,7 @@
       idProspecto:{
         types: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         validate:{
           isNumber:{
             args:true,
@@ -69,6 +70,15 @@
           notNull: true,
           isNumeric: true,
           isInt: true
+        }
+      }
+    },{
+      classMethods: {
+        associate: function( models ){
+          prospectos.hasOne( models.Estatus,{ foreingKey: 'idEstatus' } )
+          prospectos.hasOne( models.Puesto ,{ foreingKey: 'idPuesto' } )
+          prospectos.hasOne( models.Examen ,{ foreingKey: 'idExamen' } )
+          prospectos.hasOne( models.Escolaridad ,{ foreingKey: 'idEscolaridad' } )
         }
       }
     },{

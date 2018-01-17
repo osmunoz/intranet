@@ -9,6 +9,7 @@
       idEscolaridad:{
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         validate:{
           isInt: true,
           isNumeric: true,
