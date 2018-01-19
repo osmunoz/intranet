@@ -4,7 +4,8 @@
   * @author Oscar Ivan Muñoz Barajas(Slack)
   * @version 0.0.1
 */
-  module.exports = function( sequelize, DataTypes ){
+
+  module.exports = function( sequelize, DataTypes ) {
     const puesto = sequelize.define('Puesto',{
       idPuesto: {
         type: DataTypes.INTEGER,
@@ -34,16 +35,11 @@
         }
       }
     },{
-      classMethod:{
-        associate: function(models){
-          puesto.hasOne( models.Departamento, { foreingKey: 'idDepto' })
+      classMethods:{
+        associate: function( models ){
+          puesto.hasOne( models.Departamento,{ foreingKey: 'idDepto' } );
         }
       }
-    },{
-      timestamps: true,
-      paranoid: true,
-      freezeTableName: true,
-      tableName: 'Puesto'
     });
     return puesto;
   };

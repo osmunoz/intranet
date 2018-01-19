@@ -17,7 +17,7 @@
   */
     function serv( app, port ){
       app.listen( port, function() {
-        console.log( "Servidor; inicio a la perfección en el puerto: ");
+        console.log( "Servidor; inicio a la perfección en el puerto: "+port);
       });
     }
 

@@ -128,17 +128,12 @@
     },{
       classMethods:{
         associate: function( models ){
-          usuario.hasOne( models.Acceso, { foreingKey: 'idAcceso' })
-          usuario.hasMany( models.Escolaridad, { as: 'Escolaridades', foreingKey: 'idEscolaridad'})
-          usuario.hasMany( models.Examen, { as:'Examanes', foreingKey: 'idExamen'})
-          usuario.hasOne( models.Puesto, { foreingKey: 'idPuesto' } )
+          usuario.hasOne( models.Acceso, { foreingKey: 'idAcceso' });
+          usuario.hasMany( models.Escolaridad, { foreingKey: 'idEscolaridad'});
+          usuario.hasMany( models.Examen, { foreingKey: 'idExamen'});
+          usuario.hasOne( models.Puesto, { foreingKey: 'idPuesto' } );
         }
       }
-    },{
-      timestamps: true,
-      paranoid: true,
-      freezeTableName: true,
-      tableName: 'Usuario'
     });
     return usuario;
   };

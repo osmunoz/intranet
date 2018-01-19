@@ -11,7 +11,7 @@
   </div><br />
   <div class="row align-items-center justify-content-center"></div>
   <div class="formulario">
-    <form id="form_data">
+    <form id="form_data" method="POST" action="/agregar">
       <div class="row align-items-center justify-content-center">
         <div class="col col-lg-2"></div>
         <div class="col-md-auto">
@@ -24,19 +24,19 @@
         <div class="col">
           <div class="form-group">
             <label for="nombreUsuario">Nombre completo</label>
-            <input type="text" class="form-control" id="nombreUsuario" aria-describedby="Nombre" placeholder="Nombre usuario completo" />
+            <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" aria-describedby="Nombre" placeholder="Nombre usuario completo" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="nEmpleado">N° de empleado</label>
-            <input type="text" class="form-control" id="nEmpleado" aria-describedby="N° Empleado" placeholder="N°" />
+            <input type="text" class="form-control" id="nEmpleado" name="numeroEmpleado" aria-describedby="N° Empleado" placeholder="N°" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="nacimiento">Fecha de nacimiento</label>
-            <input type="date" class="form-control" id="nacimiento" aria-describedby="Fecha de nacimiento" placeholder="Fecha" />
+            <input type="date" class="form-control" id="nacimiento" name="fecha_nacimiento" aria-describedby="Fecha de nacimiento" placeholder="Fecha" />
           </div>
         </div>
         <div class="col">
@@ -44,10 +44,10 @@
           <div class="form-group">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-secondary active">
-                <input type="radio" name="h" class="form-control" id="hombre" autocomplete="off" checked>Hombre
+                <input type="radio" name="h" class="form-control" name="sexoH" id="hombre" autocomplete="off" checked>Hombre
               </label>
               <label class="btn btn-secondary">
-                <input type="radio" name="m" class="form-control" id="mujer" autocomplete="off">Mujer
+                <input type="radio" name="m" class="form-control" name="sexoM" id="mujer" autocomplete="off">Mujer
               </label>
             </div>
           </div>
@@ -57,25 +57,25 @@
         <div class="col">
           <div class="form-group">
             <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion" aria-describedby="Direccion" placeholder="direccion" />
+            <input type="text" class="form-control" id="direccion"name="direccion" aria-describedby="Direccion" placeholder="direccion" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label form="tel">Telefono</label>
-            <input type="tel" id="tel" class="form-control"  placeholder="Telefono" />
+            <input type="tel" id="tel" class="form-control"  name="telefono" placeholder="Telefono" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="mail">Correo(<small class="text-muted">Solo el de la empresa</small>)</label>
-            <input type="email" class="form-control" id="mail" placeholder="E-mail" />
+            <input type="email" class="form-control" id="mail" name="correo" placeholder="E-mail" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="ext">Extensión telefono</label>
-            <input type="number" id="ext" class="form-control" id="ext" placeholder="Ext." />
+            <input type="number" id="ext" class="form-control" name="ext_tel" id="ext" placeholder="Ext." />
           </div>
         </div>
       </div>
@@ -83,19 +83,19 @@
         <div class="col">
           <div class="form-group">
             <label for="pass">Password</label>
-            <input type="password" id="pass" class="form-control" placeholder="Password" />
+            <input type="password" id="pass" class="form-control" name="password" placeholder="Password" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="passw">Confirmar password</label>
-            <input type="password" id="passw" class="form-control" placeholder="Confirmar" />
+            <input type="password" id="passw" class="form-control" name="passConfirm" placeholder="Confirmar" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="puesto">Puesto</label>
-            <select id="puesto" class="form-control">
+            <select id="puesto" class="form-control" name="puesto">
               <option value="0">--PUESTO--</option>
             </select>
           </div>
@@ -103,7 +103,7 @@
         <div class="col">
           <div clas="form-group">
             <label for="escuela">Escolaridad</label>
-            <select id="escuela" class="form-control">
+            <select id="escuela" class="form-control" name="escuela">
               <option value="0">Escolaridad</option>
             </select>
           </div>
@@ -113,19 +113,19 @@
         <div class="col">
           <div class="form-group">
             <label for="rfc">RFC</label>
-            <input type="text" class="form-control" id="rfc" placeholder="RFC"/>
+            <input type="text" class="form-control" id="rfc" name="rfc" placeholder="RFC"/>
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="curp">CURP</label>
-            <input type="text" class="form-control" id="curp" placeholder="CURP" />
+            <input type="text" class="form-control" id="curp" name="curp" placeholder="CURP" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="typeBlood">Tipo de sangre</label>
-            <select id="typeBlood" class="form-control">
+            <select id="typeBlood" class="form-control" name="tipoSangre">
               <option value="0">--TIPO DE SANGRE--</option>
             </select>
           </div>
@@ -133,7 +133,7 @@
         <div class="col">
           <div class="form-group">
             <label for="imss">N° de IMSS</label>
-            <input type="text" class="form-control" id="imss" placeholder="N° de IMSS" />
+            <input type="text" class="form-control" id="imss" name="numeroIMSS" placeholder="N° de IMSS" />
           </div>
         </div>
       </div>

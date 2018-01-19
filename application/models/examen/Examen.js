@@ -175,11 +175,6 @@
           noEmpty: true
         }
       }
-    },{
-      timestamps: true,
-      paranoid: true,
-      freezeTableName: true,
-      tableName: 'Examen'
     });
     return examen;
   };

@@ -11,9 +11,13 @@
     const servidor      =       require( '../servs/serv.js' );
     const path          =       require( 'path' );
     const hbs           =       require( 'express-hbs' );
+    const controller    =       require( '../controllers/calls.js' );
+    const bodyParser    =       require( 'body-parser' );
 
     //configuracion para cargar la carpeta donde se encontraran los archivos estaticos
       app.use( '/', express.static( path.join( __dirname, '../src/assets' ) ));
+      app.use( bodyParser.json() );
+      app.use( bodyParser.urlencoded( { extended: true } ) );
 
     /**
        * Esta funcion, es para decirle que plantilla tomara, y cual vista debe de usar
@@ -36,6 +40,13 @@
     app.get( '/crear-cuenta', function( req, res ){
       routeViews( 'template_base', 'addUser' );
       res.render( 'addingUser' );
+    });
+    //URL para agregar a la db el usuario nuevo
+    app.post( '/agregar', function( req, res ){
+      console.log("req: "+JSON.stringify( req.body ) );
+      controller.llamarA_( 'usuarioController','usuario', 'index', req.body,  req, res );
+      var puesto = controller.llamarA_( 'usuarioController','usuario','puestos', req.body, req, res );
+      console.log( "Puesto: "+puesto);
     });
     // cuando se intente entrar a una ruta, que no se este especificando en este modulo, mandara al siguiente error
     app.get( '*', function( req, res ){

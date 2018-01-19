@@ -7,14 +7,11 @@
   module.exports = function( sequelize, DataTypes ){
     const prospectos = sequelize.define( 'Prospecto',{
       idProspecto:{
-        types: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         validate:{
-          isNumber:{
-            args:true,
-            msg: 'El valor idProspecto debe de ser numerico y asignado por el sistema'
-          },
+          isNumber:true,
           isInt: true,
           notNull: true
         }
@@ -26,7 +23,7 @@
       fecha_nacimiento:{
         type: DataTypes.DATE,
         validate:{ notNull: true }
-      }
+      },
       domicilio:{
         type: DataTypes.STRING,
         validate:{ notNull:true }
@@ -63,7 +60,7 @@
           isNumeric: true,
           isInt: true
         }
-      }
+      },
       idEscolaridad: {
         type: DataTypes.INTEGER,
         validate: {
@@ -75,17 +72,12 @@
     },{
       classMethods: {
         associate: function( models ){
-          prospectos.hasOne( models.Estatus,{ foreingKey: 'idEstatus' } )
-          prospectos.hasOne( models.Puesto ,{ foreingKey: 'idPuesto' } )
-          prospectos.hasOne( models.Examen ,{ foreingKey: 'idExamen' } )
-          prospectos.hasOne( models.Escolaridad ,{ foreingKey: 'idEscolaridad' } )
+          prospectos.hasOne( models.Estatus,{ foreingKey: 'idEstatus' } );
+          prospectos.hasOne( models.Puesto ,{ foreingKey: 'idPuesto' } );
+          prospectos.hasOne( models.Examen ,{ foreingKey: 'idExamen' } );
+          prospectos.hasOne( models.Escolaridad ,{ foreingKey: 'idEscolaridad' } );
         }
       }
-    },{
-      timestamps: true,
-      paranoid: true,
-      freezeTableName: true,
-      tableName: 'Prospecto'
     });
     return prospectos;
   };

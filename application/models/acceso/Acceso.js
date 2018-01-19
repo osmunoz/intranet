@@ -4,7 +4,7 @@
   * @version 0.0.1
 */
   module.exports = function( sequelize, DataTypes ){
-    conts acceso = sequelize.define( 'Acceso',{
+    const acceso = sequelize.define( 'Acceso',{
       idAcceso: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -36,11 +36,6 @@
           notNull: true
         }
       }
-    },{
-      timestamps: true,
-      paranoid: true,
-      freezeTableName: true,
-      tableName: 'Acceso'
     });
     return acceso;
   };

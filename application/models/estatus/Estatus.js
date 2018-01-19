@@ -19,15 +19,10 @@
           tipoEstatus: {
             type: DataTypes.STRING,
             validate: {
-              is: /^[a-z]+$/i
+              is: /^[a-z]+$/i,
               notNull: true
             }
           }
-        },{
-          timestamps: true,
-          paranoid: true,
-          freezeTableName: true,
-          tableName: 'Estatus'
         });
         return estatus;
     };
