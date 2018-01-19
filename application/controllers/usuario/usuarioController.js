@@ -1,12 +1,12 @@
 'use strict'
 //variables
   const enigma      =     require( 'enigma-code' );
-  console.log("Esto es: "+ __dirname);
   const models      =     require( '../../models/index.js' );
   //function index
   function index( req, res ){
-    this.puestos().forEach( function( index, element ){
-      console.log("INDEX: "+index+" ELEMENT: "+element);
+    models.Puesto.findAll({
+    }).then( function( puesto ){
+      console.log( puesto.tipoPuesto);
     });
   }
   /**
@@ -24,14 +24,5 @@
       return hash;
     });
   }
-  function puestos(){
-    let puesto1 = {};
-    models.Puesto.findAll({
-    }).then( function( puesto ){
-      puesto1 = JSON.stringify( puesto );
-    });
-    return puesto1;
-  }
   //Se exportan las funciones
   exports.index = index;
-  exports.puestos = puestos;

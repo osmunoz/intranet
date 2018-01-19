@@ -147,7 +147,6 @@
     fs.readdirSync( __dirname + '/puesto' ).filter( function( file ){
       return ( file.indexOf( '.' ) !== 0 );
     }).forEach( function( files ) {
-      console.log( "PATH: "+ path.join( __dirname+ '/puesto', files ) );
       var model = sequelizePuesto['import']( path.join( __dirname+ '/puesto', files ) );
       db[ model.name ] = model;
     });
