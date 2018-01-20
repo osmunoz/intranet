@@ -38,15 +38,13 @@
     });
     //URL para crear una cuenta nueva
     app.get( '/crear-cuenta', function( req, res ){
+      var datos = controller.llamarA_( 'usuarioController','usuario', 'index', req.body,  req, res );
+      console.log( "-- "+datos );
       routeViews( 'template_base', 'addUser' );
-      res.render( 'addingUser' );
     });
     //URL para agregar a la db el usuario nuevo
     app.post( '/agregar', function( req, res ){
-      console.log("req: "+JSON.stringify( req.body ) );
       controller.llamarA_( 'usuarioController','usuario', 'index', req.body,  req, res );
-      var puesto = controller.llamarA_( 'usuarioController','usuario','puestos', req.body, req, res );
-      console.log( "Puesto: "+puesto);
     });
     // cuando se intente entrar a una ruta, que no se este especificando en este modulo, mandara al siguiente error
     app.get( '*', function( req, res ){

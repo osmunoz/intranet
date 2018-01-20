@@ -97,6 +97,9 @@
             <label for="puesto">Puesto</label>
             <select id="puesto" class="form-control" name="puesto">
               <option value="0">--PUESTO--</option>
+              {{#each data.puesto}}
+                <option value="{{idPuesto}}">{{tipoPuesto}}</option>
+              {{/each}}
             </select>
           </div>
         </div>

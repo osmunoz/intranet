@@ -143,7 +143,6 @@
       operatorsAliases: true
     });
 
-
     fs.readdirSync( __dirname + '/puesto' ).filter( function( file ){
       return ( file.indexOf( '.' ) !== 0 );
     }).forEach( function( files ) {
