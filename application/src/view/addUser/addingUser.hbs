@@ -97,7 +97,7 @@
             <label for="puesto">Puesto</label>
             <select id="puesto" class="form-control" name="puesto">
               <option value="0">--PUESTO--</option>
-              {{#each data.puesto}}
+              {{#each puesto}}
                 <option value="{{idPuesto}}">{{tipoPuesto}}</option>
               {{/each}}
             </select>
@@ -108,6 +108,9 @@
             <label for="escuela">Escolaridad</label>
             <select id="escuela" class="form-control" name="escuela">
               <option value="0">Escolaridad</option>
+              {{#each escuela}}
+                <option value="{{idEscolaridad}}">{{tipoEscolaridad}}</option>
+              {{/each}}
             </select>
           </div>
         </div>
@@ -130,6 +133,10 @@
             <label for="typeBlood">Tipo de sangre</label>
             <select id="typeBlood" class="form-control" name="tipoSangre">
               <option value="0">--TIPO DE SANGRE--</option>
+              <option value="1">A</option>
+              <option value="2">B</option>
+              <option value="3">AB</option>
+              <option value="4">O</option>
             </select>
           </div>
         </div>

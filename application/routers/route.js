@@ -38,8 +38,7 @@
     });
     //URL para crear una cuenta nueva
     app.get( '/crear-cuenta', function( req, res ){
-      var datos = controller.llamarA_( 'usuarioController','usuario', 'index', req.body,  req, res );
-      console.log( "-- "+datos );
+      controller.llamarA_( 'usuarioController','usuario', 'index', req.body,  req, res );
       routeViews( 'template_base', 'addUser' );
     });
     //URL para agregar a la db el usuario nuevo

@@ -4,21 +4,10 @@
   const models      =     require( '../../models/' );
   //function index
   function index( object, req, res ){
-    var data ={
-      puesto: puestos(),
-      escuela : escolaridades()
-    }
-    res.render( 'addingUser',{ data:data  } );
-
-  }
-  function puestos(){
-    models.Puesto.findAll({}).then( function( getPuesto ){
-      return JSON.parse( JSON.stringify( getPuesto ) );
-    });
-  }
-  function escolaridades(){
-    models.Escolaridad({}).then( function( escuela ){
-      return JSON.parse( JSON.stringify( escuela ) );
+    models.Puesto.findAll({}).then( function( puestos ){
+      models.Escolaridad.findAll({}).then( function( escuela ){
+        res.render( 'addingUser', { puesto: puestos, escuela: escuela } );
+      });
     });
   }
   /**
