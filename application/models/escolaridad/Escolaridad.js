@@ -10,18 +10,11 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        validate:{
-          isInt: true,
-          isNumeric: true,
-          notNull: true
-        }
+        allowNull: false
       },
       tipoEscolaridad:{
         type: DataTypes.STRING,
-        validate:{
-          is: /^[a-z]+$/i,
-          notNull: true
-        }
+        allowNull: true
       }
     });
     return escolaridad;

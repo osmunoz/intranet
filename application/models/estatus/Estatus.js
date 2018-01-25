@@ -10,18 +10,11 @@
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            validate:{
-              isInt: true,
-              isNumeric: true,
-              notNull:true
-            }
+            allowNull: false
           },
           tipoEstatus: {
             type: DataTypes.STRING,
-            validate: {
-              is: /^[a-z]+$/i,
-              notNull: true
-            }
+            allowNull: true
           }
         });
         return estatus;

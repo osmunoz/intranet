@@ -11,169 +11,87 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        validate:{
-          notNull: true,
-          isNumeric: true,
-          isInt: true
-        }
+        allowNull: false
       },
       idProspecto:{
         type: DataTypes.INTEGER,
-        validate:{
-          notNull: true,
-          isNumeric: true,
-          isInt: true
-        }
+        allowNull: true
       },
       idUsuario:{
         type: DataTypes.INTEGER,
-        validate:{
-          notNull: false,
-          allowNull: true,
-          isNumeric: true,
-          isInt: true
-        }
+        allowNull: false
       },
       tituloExamen: {
         type: DataTypes.STRING,
-        validate:{ notNull: true }
+        allowNull: true
       },
       enfoque_a_resultado: {
         type: DataTypes.FLOAT,
-        validate:{
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       trabajo_bajo_presion: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       planeacion_y_organizacion: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       liderazgo:{
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       desarrollo_de_colaboradores: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       trabajo_en_equipo: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       capacidad_de_analisis: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       toma_de_decisiones: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       supervision_de_procesos:{
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       delegacion: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       comunicacion: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       juicio_autonomia:{
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       espiritu_de_servicio: {
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       estabilidad_emocional:{
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       socioeconomico:{
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       total:{
         type: DataTypes.FLOAT,
-        validate: {
-          notNull: true,
-          isFloat: true,
-          noEmpty: true
-        }
+        allowNull: true
       },
       IQ:{
         type:DataTypes.INTEGER,
-        validate:{
-          notNull: true,
-          isNumeric: true,
-          isInt: true,
-          noEmpty: true
-        }
+        allowNull: true
       }
     });
     return examen;

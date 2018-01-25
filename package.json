@@ -8,7 +8,7 @@
         "type": "git",
         "url": "https://github.com/osmunoz/intranet.git"
     },
-    "licenses": [
+    "license": [
         {
             "type": "MIT",
             "url": "https://github.com/osmunoz/intranet/blob/master/LICENSE"
@@ -35,6 +35,10 @@
         "enigma-code": "0.0.11",
         "body-parser": "1.18.2",
         "sequelize": "4.31.2",
-        "tedious": "2.1.5"
+        "tedious": "2.1.5",
+        "nodemailer-smtp-transport": "2.7.4",
+        "nodemailer-express-handlebars": "2.0.0",
+        "multer": "1.3.0",
+        "connect-busboy": "0.0.2"
     }
 }

@@ -10,64 +10,43 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        validate:{
-          isNumber:true,
-          isInt: true,
-          notNull: true
-        }
+        allowNull: false
       },
       nombre_completo:{
         type: DataTypes.STRING,
-        validate:{ notNull: true }
+        allowNull: true
       },
       fecha_nacimiento:{
         type: DataTypes.DATE,
-        validate:{ notNull: true }
+        allowNull: true
       },
       domicilio:{
         type: DataTypes.STRING,
-        validate:{ notNull:true }
+        allowNull: true
       },
       correo:{
         type: DataTypes.STRING,
-        validate:{
-          isEmail:{
-            args: true,
-            msg: 'El correo ya se registro hace tiempo'
-          }
-        }
+        allowNull: false
       },
       fecha_registro:{
         type: DataTypes.DATE,
-        validate:{ notNull: true }
+        allowNull: true
       },
       idEstatus:{
         type: DataTypes.INTEGER,
-        validate:{ notNull: true }
+        allowNull: true
       },
       idPuesto:{
         type: DataTypes.INTEGER,
-        validate:{
-          notNull: true,
-          isNumeric: true,
-          isInt: true
-        }
+        allowNull: true
       },
       idExamen:{
         type: DataTypes.INTEGER,
-        validate: {
-          notNull: true,
-          isNumeric: true,
-          isInt: true
-        }
+        allowNull: true
       },
       idEscolaridad: {
         type: DataTypes.INTEGER,
-        validate: {
-          notNull: true,
-          isNumeric: true,
-          isInt: true
-        }
+        allowNull: true
       }
     },{
       classMethods: {

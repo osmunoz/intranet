@@ -11,28 +11,19 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        validate:{
-          notNull: true,
-          isInt: true,
-          isNumeric: true,
-        }
+        allowNull: false
       },
       tipoPuesto: {
         type: DataTypes.STRING,
-        validate:{ notNull: true }
+        allowNull: true,
       },
       idDepto: {
         type: DataTypes.STRING,
-        validate: {
-          notNull: true,
-          is: /^[a-z]+$/i
-        }
+        allowNull: true
       },
       descripcion: {
         type: DataTypes.STRING,
-        validate: {
-          notNull: true
-        }
+        allowNull: true,
       }
     },{
       classMethods:{

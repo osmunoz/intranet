@@ -9,32 +9,19 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        validate: {
-          isInt: true,
-          isNumeric: true,
-          notNull: true
-        }
+        allowNull: false
       },
       tipoAcceso: {
         type: DataTypes.INTEGER,
-        validate:{
-          isInt: true,
-          isNumeric: true,
-          notNull: true
-        }
+        allowNull: true
       },
       nombreAcceso:{
         type: DataTypes.STRING,
-        validate:{
-          notNull: true,
-          max: 21
-        }
+        allowNull: true,
       },
       tipoUsuario:{
         type: DataTypes.INTEGER,
-        validate:{
-          notNull: true
-        }
+        allowNull: true,
       }
     });
     return acceso;

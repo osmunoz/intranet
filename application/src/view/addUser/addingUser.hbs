@@ -1,24 +1,33 @@
 <div class="container-fluid">
-  <div class="row align-items-center justify-content-center">
+  <div class="row">
     <div class="col"></div>
     <div class="col-md-auto">
       <h3>
         <span class="alert alert-warning">Recuerde</span>
-        <small class="text-muted">Que la imagen que subira acontinuación solo puede ser la institucional</small>
+        <small class="text-muted">Que la imagen que subira acontinuación solo puede ser<br><br> la institucional</small>
       </h3>
     </div>
     <div class="col"></div>
   </div><br />
   <div class="row align-items-center justify-content-center"></div>
   <div class="formulario">
-    <form id="form_data" method="POST" action="/agregar">
+    <form id="form_data" method="POST" action="/agregar" enctype="multipart/form-data">
       <div class="row align-items-center justify-content-center">
         <div class="col col-lg-2"></div>
         <div class="col-md-auto">
-          <img class="rounded img-fluid" src="/img/user.png" alt="Registro usuario" /><br>
-          <input type="file" id="upload_picture" />
+          <img class="rounded img-fluid" src="/img/user.png" id="pictureUser" alt="Registro usuario" /><br>
+          <input class="form-control" id="up" type="file" name="fotoUp"/>
         </div>
         <div class="col col-lg-2"></div>
+      </div>
+      <div class="row align-items-center justify-content-center">
+        <div class="col col-lg-2"></div>
+        <div class="col-md-auto">
+          <div class="progress">
+            <div class="progress-bar" id="progeso" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col"></div>
       </div>
       <div class="row">
         <div class="col">
@@ -43,11 +52,11 @@
           Sexo:
           <div class="form-group">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-secondary active">
-                <input type="radio" name="h" class="form-control" name="sexoH" id="hombre" autocomplete="off" checked>Hombre
+              <label class="btn btn-secondary">
+                <input type="radio" name="h" class="form-control" value="" id="hombre" autocomplete="off">Hombre
               </label>
               <label class="btn btn-secondary">
-                <input type="radio" name="m" class="form-control" name="sexoM" id="mujer" autocomplete="off">Mujer
+                <input type="radio" name="m" class="form-control" value="" id="mujer" autocomplete="off">Mujer
               </label>
             </div>
           </div>
@@ -57,13 +66,13 @@
         <div class="col">
           <div class="form-group">
             <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion"name="direccion" aria-describedby="Direccion" placeholder="direccion" />
+            <input type="text" class="form-control" id="direccion" name="direccion" aria-describedby="Direccion" placeholder="direccion" />
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label form="tel">Telefono</label>
-            <input type="tel" id="tel" class="form-control"  name="telefono" placeholder="Telefono" />
+            <input type="text" id="tel" class="form-control" name="telefono" placeholder="Telefono" />
           </div>
         </div>
         <div class="col">
@@ -105,11 +114,11 @@
         </div>
         <div class="col">
           <div clas="form-group">
-            <label for="escuela">Escolaridad</label>
-            <select id="escuela" class="form-control" name="escuela">
-              <option value="0">Escolaridad</option>
-              {{#each escuela}}
-                <option value="{{idEscolaridad}}">{{tipoEscolaridad}}</option>
+            <label for="dep">Departamento</label>
+            <select id="dep" class="form-control" name="dep">
+              <option value="0">Departamento</option>
+              {{#each departamento}}
+                <option value="{{idDepartamento}}">{{departamento}}</option>
               {{/each}}
             </select>
           </div>
@@ -133,10 +142,10 @@
             <label for="typeBlood">Tipo de sangre</label>
             <select id="typeBlood" class="form-control" name="tipoSangre">
               <option value="0">--TIPO DE SANGRE--</option>
-              <option value="1">A</option>
-              <option value="2">B</option>
-              <option value="3">AB</option>
-              <option value="4">O</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="AB">AB</option>
+              <option value="O">O</option>
             </select>
           </div>
         </div>
@@ -148,9 +157,25 @@
         </div>
       </div>
       <div class="row">
+        <div class="col">
+          <div clas="form-group">
+            <label for="escuela">Escolaridad</label>
+            <select id="escuela" class="form-control" name="escuela">
+              <option value="0">Escolaridad</option>
+              {{#each escuela}}
+                <option value="{{idEscolaridad}}">{{tipoEscolaridad}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="row">
         <div class="col"></div>
         <div class="col">
-          <button type="submit" class="btn btn-guardar form-control">Guardar</button>
+          <button type="submit" id="enviando" class="btn btn-guardar form-control">Guardar</button>
         </div>
         <div class="col">
           <button type="button" class="btn btn-cancelar form-control">Cancelar</button>

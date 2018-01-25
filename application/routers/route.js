@@ -13,11 +13,14 @@
     const hbs           =       require( 'express-hbs' );
     const controller    =       require( '../controllers/calls.js' );
     const bodyParser    =       require( 'body-parser' );
+    const fs            =       require( 'fs' );
+    const fileup        =       require( 'express-fileupload' );
 
     //configuracion para cargar la carpeta donde se encontraran los archivos estaticos
       app.use( '/', express.static( path.join( __dirname, '../src/assets' ) ));
       app.use( bodyParser.json() );
       app.use( bodyParser.urlencoded( { extended: true } ) );
+      app.use( fileup() );
 
     /**
        * Esta funcion, es para decirle que plantilla tomara, y cual vista debe de usar
@@ -41,9 +44,21 @@
       controller.llamarA_( 'usuarioController','usuario', 'index', req.body,  req, res );
       routeViews( 'template_base', 'addUser' );
     });
+    //la siguiente ruta es para subir la foto
+    app.post( '/subiendoFoto' ,function( req, res ){
+
+      res.send({ dato:true });
+    });
     //URL para agregar a la db el usuario nuevo
     app.post( '/agregar', function( req, res ){
-      controller.llamarA_( 'usuarioController','usuario', 'index', req.body,  req, res );
+      console.log( req.files );
+      if( !req.files )
+        return res.status( 400 ).send( 'No files were uploaded.' );
+      let file = req.files.fotoUp;
+      file.mv( __dirname + '/../src/assets/fotos/'+req.body.nombreUsuario+'.jpg', function( err ){
+        controller.llamarA_( 'usuarioController','usuario', 'registro', req.body,  req, res );
+        routeViews( 'template_base', 'addUser' );
+      });
     });
     // cuando se intente entrar a una ruta, que no se este especificando en este modulo, mandara al siguiente error
     app.get( '*', function( req, res ){

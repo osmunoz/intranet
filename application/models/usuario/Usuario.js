@@ -12,8 +12,8 @@
         primaryKey: true,
         autoIncrement:true,
         autoIncrement:true,
+        allowNull: false,
         validate: {
-          notNull: true,
           isNumeric: true,
           isInt: true
         }
@@ -24,98 +24,75 @@
           args: true,
           msg:'Este cambio, \'numeroEmpleado\' debe de ser unico, valor repetido'
         },
-        validate: { notNull: true }
+        allowNull: false,
       },
       fecha_nacimiento:{
         type: DataTypes.DATE,
-        validate:{ notNull: true }
+        allowNull: false,
       },
       sexo: {
         type: DataTypes.STRING,
-        validate:{ notNull: true }
+        allowNull: false
       },
       foto: {
         type: DataTypes.STRING,
-        validate:{ notNull: false }
+        allowNull: true
+      },
+      direccion:{
+        type: DataTypes.STRING,
+        allowNull: false
       },
       nombre_completo: {
         type: DataTypes.STRING,
-        validate: { is: /^[a-z]+$/i, notNull: true }
+        allowNull: false
       },
       telefono: {
         type: DataTypes.STRING,
-        validate: {
-          notNull: false,
-          not: ["[a-z]","i"]
-        }
+        allowNull: false
       },
       correo: {
         type: DataTypes.STRING,
-        validate: {
-          notNull: true,
-          isEmail: true
-        }
+        allowNull: false
       },
       ext_tel: {
         type: DataTypes.STRING,
-        validate: {
-          notNull: false
-        }
+        allowNull: true
       },
       fecha_registro: {
         type: DataTypes.DATE,
-        validate:{ notNull: true }
+        allowNull: false
       },
       password: {
         type: DataTypes.STRING,
-        validate:{ notNull:true }
+        allowNull: false
       },
       idPuesto: {
         type: DataTypes.INTEGER,
-        validate:{
-          notNull: true,
-          isNumeric: true,
-          isInt: true
-        }
+        allowNull: false
       },
       idExamen:{
         type: DataTypes.INTEGER,
-        validate:{
-          notNull: true,
-          isNumeric: true,
-          isInt: true
-        }
+        allowNull: true
       },
       idEscolaridad:{
         type: DataTypes.INTEGER,
-        validate:{
-          notNull:true,
-          isNumeric:true,
-          isInt: true
-        }
+        allowNull: true
       },
       RFC:{
         type: DataTypes.STRING,
-        validate: { notNull: true }
+        allowNull: false
       },
       CURP: {
         type: DataTypes.STRING,
-        validate:{ notNull:true }
+        allowNull: false
       },
       tipoSangre:{
         type:DataTypes.STRING,
-        validate:{
-          notNull:false,
-          allowNull: true
-        }
+        allowNull: true
       },
       idAcceso:{
         type:DataTypes.INTEGER,
-        validate:{
-          notNull:true,
-          isNumeric:true,
-          isInt:true
-        }
+        allowNull: false
       },
       numeroIMSS:{
         type:DataTypes.STRING,
@@ -123,14 +100,13 @@
           args: true,
           msg:'Este cambio, \'numeroIMSS\' debe de ser unico, valor repetido'
         },
-        validate:{ notNull:true }
+        allowNull: false
       }
     },{
       classMethods:{
         associate: function( models ){
           usuario.hasOne( models.Acceso, { foreingKey: 'idAcceso' });
           usuario.hasMany( models.Escolaridad, { foreingKey: 'idEscolaridad'});
-          usuario.hasMany( models.Examen, { foreingKey: 'idExamen'});
           usuario.hasOne( models.Puesto, { foreingKey: 'idPuesto' } );
         }
       }
