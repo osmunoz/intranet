@@ -11,12 +11,8 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement:true,
-        autoIncrement:true,
         allowNull: false,
-        validate: {
-          isNumeric: true,
-          isInt: true
-        }
+        field: 'usuario_id'
       },
       numeroEmpleado:{
         type: DataTypes.INTEGER,
@@ -101,15 +97,21 @@
           msg:'Este cambio, \'numeroIMSS\' debe de ser unico, valor repetido'
         },
         allowNull: false
+      },
+      aceptado:{
+        type: DataTypes.INTEGER,
+        allowNull: false
       }
     },{
-      classMethods:{
-        associate: function( models ){
-          usuario.hasOne( models.Acceso, { foreingKey: 'idAcceso' });
-          usuario.hasMany( models.Escolaridad, { foreingKey: 'idEscolaridad'});
-          usuario.hasOne( models.Puesto, { foreingKey: 'idPuesto' } );
-        }
-      }
+      timestamps: false,
+      paranoid: true,
+      freezeTableName: true,
+      tableName: 'Usuario'
     });
+    usuario.associate = function( models ){
+      usuario.hasOne( models.Acceso,{ foreingKey:{ name:'fk_acceso',field:'idAcceso'} } );
+      usuario.hasMany( models.Escolaridad, { foreingKey: {name:'fk_escolaridad',field:'idEscolaridad'} } );
+      usuario.hasOne( models.Puesto, { foreingKey:{name:'fk_puest',field:'idPuesto'} } );
+    };
     return usuario;
   };

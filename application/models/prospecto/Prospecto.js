@@ -10,7 +10,8 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
+        field: 'prospecto_id'
       },
       nombre_completo:{
         type: DataTypes.STRING,
@@ -49,14 +50,16 @@
         allowNull: true
       }
     },{
-      classMethods: {
-        associate: function( models ){
-          prospectos.hasOne( models.Estatus,{ foreingKey: 'idEstatus' } );
-          prospectos.hasOne( models.Puesto ,{ foreingKey: 'idPuesto' } );
-          prospectos.hasOne( models.Examen ,{ foreingKey: 'idExamen' } );
-          prospectos.hasOne( models.Escolaridad ,{ foreingKey: 'idEscolaridad' } );
-        }
-      }
+      timestamps: false,
+      paranoid: true,
+      freezeTableName: true,
+      tableName: 'Prospecto'
     });
+    prospectos.associate = function( models ){
+      prospectos.hasOne( models.Estatus );
+      prospectos.hasOne( models.Puesto );
+      prospectos.hasOne( models.Examen );
+      prospectos.hasOne( models.Escolaridad );
+    };
     return prospectos;
   };

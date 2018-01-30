@@ -9,7 +9,14 @@
           <div class="card-body">
             <h5 class="card-title">Intranet</h5>
             <h6 class="card-subtitle mb-2 text-muted">Login</h6>
-            <form>
+            <form method="POST" action="/login">
+              <div class="form-group">
+                {{#if obj}}
+                  <div class="alert alert-danger" role="alert">
+                    {{obj}}
+                  </div>
+                {{/if}}
+              </div>
               <div class="form-group">
                 <label for="user"><span class="oi oi-person" id="basico"></span>&nbsp;Usuario</label>
                 <input type="text" class="form-control" id="user" name="user" aria-describedby="emailHelp" placeholder="Correo" />
@@ -17,19 +24,19 @@
               </div>
               <div class="form-group">
                 <label for="pass"><span class="oi oi-lock-locked"></span>&nbsp;Contraseña</label>
-                <input type="password" class="form-control" id="pass" placeholder="Contraseña" />
+                <input type="password" class="form-control" name="pass" id="pass" placeholder="Contraseña" />
               </div>
               <div class="form-group centrando">
                 <button type="submit" class="btn btn-primary">Entrar</button>
                 <button type="button" class="btn btn-danger">Cancelar</button>
               </div>
-              <div class="form-group centrado">
-                <p>
-                    Crear cuenta&nbsp;<a href="/crear-cuenta" class="badge badge-success">¡Aquí!</a>
-                    ¿Olvido su contraseña?&nbsp;<a href="#" class="badge badge-warning">¡Click aquí!</a>
-                </p>
-              </div>
             </form>
+            <div class="centrado">
+              <p>
+                  Crear cuenta&nbsp;<a href="/crear-cuenta" class="badge badge-success">¡Aquí!</a>
+                  ¿Olvido su contraseña?&nbsp;<a href="#" class="badge badge-warning">¡Click aquí!</a>
+              </p>
+            </div>
           </div>
         </div>
         <!-- Fin del login -->

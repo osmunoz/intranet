@@ -16,6 +16,14 @@
         type: DataTypes.STRING,
         allowNull: true
       }
+    },{
+      timestamps: false,
+      paranoid: true,
+      freezeTableName: true,
+      tableName: 'Escolaridad'
     });
+    escolaridad.associate = function( models ){
+      escolaridad.hasMany( models.Usuario );
+    }
     return escolaridad;
   }

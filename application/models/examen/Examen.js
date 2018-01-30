@@ -93,6 +93,11 @@
         type:DataTypes.INTEGER,
         allowNull: true
       }
+    },{
+      timestamps: false,
+      paranoid: true,
+      freezeTableName: true,
+      tableName: 'Examen'
     });
     return examen;
   };

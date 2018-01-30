@@ -16,6 +16,11 @@
             type: DataTypes.STRING,
             allowNull: true
           }
+        },{
+          timestamps: false,
+          paranoid: true,
+          freezeTableName: true,
+          tableName: 'Estatus'
         });
         return estatus;
     };

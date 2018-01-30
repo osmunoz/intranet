@@ -10,7 +10,8 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
+        allowNull: false,
+        field: 'departamento_id'
       },
       departamento: {
         type: DataTypes.STRING,
@@ -20,6 +21,14 @@
         type: DataTypes.STRING,
         allowNull: true
       }
+    },{
+      timestamps: false,
+      paranoid: true,
+      freezeTableName: true,
+      tableName: 'Departamento'
     });
+    departamento.associate = function( models ){
+      departamento.hasMany( models.Puesto);
+    };
     return departamento;
   }

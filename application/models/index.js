@@ -15,12 +15,6 @@
         acquire: 30000,
         idle: 10000
       },
-      define: {
-        timestamps: false,
-        paranoid: true,
-        freezeTableName: true,
-        tableName: 'Puesto'
-      },
       operatorsAliases: true
     });
     const sequelizeUsuario = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
@@ -31,12 +25,6 @@
         min: 0,
         acquire: 30000,
         idle: 10000
-      },
-      define:{
-        timestamps: false,
-        paranoid: true,
-        freezeTableName: true,
-        tableName: 'Usuario'
       },
       operatorsAliases: true
     });
@@ -49,12 +37,6 @@
         acquire: 30000,
         idle: 10000
       },
-      define:{
-        timestamps: false,
-        paranoid: true,
-        freezeTableName: true,
-        tableName: 'Prospecto'
-      },
       operatorsAliases: true
     });
     const sequelizeExamen = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
@@ -65,12 +47,6 @@
         min: 0,
         acquire: 30000,
         idle: 10000
-      },
-      define:{
-        timestamps: false,
-        paranoid: true,
-        freezeTableName: true,
-        tableName: 'Examen'
       },
       operatorsAliases: true
     });
@@ -83,12 +59,6 @@
         acquire: 30000,
         idle: 10000
       },
-      define:{
-        timestamps: false,
-        paranoid: true,
-        freezeTableName: true,
-        tableName: 'Estatus'
-      },
       operatorsAliases: true
     });
     const sequelizeEscolaridad = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
@@ -99,12 +69,6 @@
         min: 0,
         acquire: 30000,
         idle: 10000
-      },
-      define:{
-        timestamps: false,
-        paranoid: true,
-        freezeTableName: true,
-        tableName: 'Escolaridad'
       },
       operatorsAliases: true
     });
@@ -117,12 +81,6 @@
         acquire: 30000,
         idle: 10000
       },
-      define:{
-        timestamps: false,
-        paranoid: true,
-        freezeTableName: true,
-        tableName: 'Departamento'
-      },
       operatorsAliases: true
     });
     const sequelizeAcceso = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
@@ -133,12 +91,6 @@
         min: 0,
         acquire: 30000,
         idle: 10000
-      },
-      define:{
-        timestamps: false,
-        paranoid: true,
-        freezeTableName: true,
-        tableName: 'Acceso'
       },
       operatorsAliases: true
     });

@@ -15,12 +15,15 @@
     const bodyParser    =       require( 'body-parser' );
     const fs            =       require( 'fs' );
     const fileup        =       require( 'express-fileupload' );
+    const thumb         =       require( 'node-thumbnail' ).thumb;
+    const cookie        =       require( 'cookie-parser' );
 
     //configuracion para cargar la carpeta donde se encontraran los archivos estaticos
       app.use( '/', express.static( path.join( __dirname, '../src/assets' ) ));
       app.use( bodyParser.json() );
       app.use( bodyParser.urlencoded( { extended: true } ) );
       app.use( fileup() );
+      app.use( cookie() );
 
     /**
        * Esta funcion, es para decirle que plantilla tomara, y cual vista debe de usar
@@ -37,17 +40,20 @@
     // cuando entre a localhost:8081/ abrira la siguiente pagina
     app.get( '/', function( req, res ){
       routeViews( 'login', 'login' );
-      res.render('login_view');
+      console.log( "PARAMETRO GET: "+JSON.stringify( req.params ) );
+      if( JSON.stringify( req.params ) === '{}' )
+        res.render('login_view');
     });
     //URL para crear una cuenta nueva
     app.get( '/crear-cuenta', function( req, res ){
       controller.llamarA_( 'usuarioController','usuario', 'index', req.body,  req, res );
       routeViews( 'template_base', 'addUser' );
     });
-    //la siguiente ruta es para subir la foto
-    app.post( '/subiendoFoto' ,function( req, res ){
-
-      res.send({ dato:true });
+    //login
+    app.post( '/login',function( req, res ){
+      controller.llamarA_( 'usuarioController', 'usuario', 'login', req.body, req, res );
+      controller.llamarA_( 'usuarioController', 'usuario', 'llenado_cookie', req.body, req, res );
+      routeViews( 'panel','usuario' );
     });
     //URL para agregar a la db el usuario nuevo
     app.post( '/agregar', function( req, res ){
@@ -56,8 +62,17 @@
         return res.status( 400 ).send( 'No files were uploaded.' );
       let file = req.files.fotoUp;
       file.mv( __dirname + '/../src/assets/fotos/'+req.body.nombreUsuario+'.jpg', function( err ){
-        controller.llamarA_( 'usuarioController','usuario', 'registro', req.body,  req, res );
-        routeViews( 'template_base', 'addUser' );
+        thumb({
+          source: __dirname + '/../src/assets/fotos/'+req.body.nombreUsuario+'.jpg',
+          destination: __dirname + '/../src/assets/preview',
+          suffix: 'thumb',
+          digest: false,
+          width: 50,
+          overwrite: true
+        },function( files, err, stdout, stderr ){
+          controller.llamarA_( 'usuarioController','usuario', 'registro', req.body,  req, res );
+          routeViews( 'template_base', 'addUser' );
+        });
       });
     });
     // cuando se intente entrar a una ruta, que no se este especificando en este modulo, mandara al siguiente error
