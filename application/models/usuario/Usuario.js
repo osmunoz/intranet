@@ -1,4 +1,5 @@
   'use stric'
+
 /**
   * Se hara la definición del modelo, para así poder hacer las consultas a la DB
   * @author Oscar Ivan Muñoz Barajas(Slack)
@@ -11,8 +12,7 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement:true,
-        allowNull: false,
-        field: 'usuario_id'
+        allowNull: false
       },
       numeroEmpleado:{
         type: DataTypes.INTEGER,
@@ -109,9 +109,8 @@
       tableName: 'Usuario'
     });
     usuario.associate = function( models ){
-      usuario.hasOne( models.Acceso,{ foreingKey:{ name:'fk_acceso',field:'idAcceso'} } );
-      usuario.hasMany( models.Escolaridad, { foreingKey: {name:'fk_escolaridad',field:'idEscolaridad'} } );
-      usuario.hasOne( models.Puesto, { foreingKey:{name:'fk_puest',field:'idPuesto'} } );
+      usuario.belongsTo( models.Puesto,{ foreignKey:'idPuesto', targetKey:'idPuesto'} );
+      usuario.belongsTo( models.Acceso, { foreignKey:'idAcceso', targetKey: 'idAcceso' } );
     };
     return usuario;
   };

@@ -10,8 +10,7 @@
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false,
-        field: 'prospecto_id'
+        allowNull: false
       },
       nombre_completo:{
         type: DataTypes.STRING,

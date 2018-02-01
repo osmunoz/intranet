@@ -69,7 +69,6 @@
     let fuera = "";
     enigma.genHash( valor,seed,contrasena, function( err, hash ){
       if( err ) return console.log( err );
-      console.log( hash );
       fuera = hash;
     });
     return fuera;
@@ -96,13 +95,30 @@
     models.Usuario.findAll({
       where: {
         correo: user,
-        password: pass
-      }
+        password: pass,
+        aceptado:1
+      },
+      attributes:['idUsuario','nombre_completo','correo','aceptado','fecha_registro','numeroEmpleado','password'],
+      include:[
+        {
+          model: models.Puesto,
+          attributes:[ 'tipoPuesto' ],
+          include:[
+            {
+              model: models.Departamento,
+              attributes:['departamento']
+            }
+          ]
+        },{
+          model: models.Acceso,
+          attributes: ['tipoAcceso','nombreAcceso']
+        }
+      ]
     }).then( function( encontrado ) {
       if( JSON.stringify( encontrado ) != '[]' ){
         encontrado.forEach( function( element ){
           if( element.password.trim() === pass ){
-            if( element.aceptado === 1 ){console.log("DOS");
+            if( element.aceptado === 1 ){
               comprobado = true;
               obj ={
                 nombre: element.nombre_completo,
@@ -123,42 +139,24 @@
   /**
     * Esta funcion hace llenar un JSON, para llenar la cookie
     * y así usarla como se desee
-    * @param object
-    * @param req
-    * @param res
+    * @param {user}
+    * @param {pass}
     * @return JSON
     * @throws sequelize error
   */
-  function llenado_cookie( object, req, res ){
+  function llenado_cookie( user, pass ){
     let galleta = {};
-    console.log("BODY: "+JSON.stringify( req.body ) );
-    models.Usuario.findOne({
-      where:{
-        correo: req.body.user.trim(),
-        password: encript( req.body.pass.trim() ),
-        aceptado: 1
-      },
-      attributes:['idUsuario','nombre_completo','correo','aceptado','fecha_registro','numeroEmpleado'],
-      include:[
-        {
-          model: models.Puesto,
-          attributes:[ 'idPuesto','tipoPuesto' ],
-          include:[
-            {
-              model: models.Departamento,
-              attributes:[ 'idDepartamento','departamento' ]
-            }
-          ]
-        }
-      ]
-    }).then( function( data ){console.log("TRES");
-      data.forEach( function( element ){
-        console.log("La cookie: "+JSON.stringify( element ) );
+    models.Usuario.findAll({
+
+    }).then( function( data ){
+      return data;
+      /*data.forEach( function( element ){
+        galleta = element;
       });
+      return galleta;*/
     });
   }
   //Se exportan las funciones
   exports.index = index;
   exports.registro = registro;
   exports.login = login;
-  exports.llenado_cookie = llenado_cookie;

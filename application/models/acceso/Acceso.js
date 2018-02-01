@@ -29,5 +29,8 @@
       freezeTableName: true,
       tableName: 'Acceso'
     });
+    acceso.associate = function( models ){
+      acceso.belongsTo( models.Usuario,{ foreignKey:'idAcceso', targetKey: 'idAcceso' } );
+    };
     return acceso;
   };

@@ -6,7 +6,7 @@
     const env         =         process.env.NODE_ENV || 'development';
     const db          =         {};
 
-    const sequelizePuesto = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
+    const sequelizePuesto = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
       host: '192.168.87.10',
       dialect: 'mssql',
       pool: {
@@ -17,7 +17,7 @@
       },
       operatorsAliases: true
     });
-    const sequelizeUsuario = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
+    const sequelizeUsuario = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
       host: '192.168.87.10',
       dialect: 'mssql',
       pool: {
@@ -28,7 +28,7 @@
       },
       operatorsAliases: true
     });
-    const sequelizeProspecto = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
+    const sequelizeProspecto = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
       host: '192.168.87.10',
       dialect: 'mssql',
       pool: {
@@ -39,7 +39,7 @@
       },
       operatorsAliases: true
     });
-    const sequelizeExamen = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
+    const sequelizeExamen = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
       host: '192.168.87.10',
       dialect: 'mssql',
       pool: {
@@ -50,7 +50,7 @@
       },
       operatorsAliases: true
     });
-    const sequelizeEstatus = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
+    const sequelizeEstatus = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
       host: '192.168.87.10',
       dialect: 'mssql',
       pool: {
@@ -61,7 +61,7 @@
       },
       operatorsAliases: true
     });
-    const sequelizeEscolaridad = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
+    const sequelizeEscolaridad = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
       host: '192.168.87.10',
       dialect: 'mssql',
       pool: {
@@ -72,7 +72,7 @@
       },
       operatorsAliases: true
     });
-    const sequelizeDepartamento = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
+    const sequelizeDepartamento = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
       host: '192.168.87.10',
       dialect: 'mssql',
       pool: {
@@ -83,7 +83,7 @@
       },
       operatorsAliases: true
     });
-    const sequelizeAcceso = new Sequelize( 'Intranet', 'sa', 'HJSPASS#1',{
+    const sequelizeAcceso = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
       host: '192.168.87.10',
       dialect: 'mssql',
       pool: {

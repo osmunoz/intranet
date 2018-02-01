@@ -40,7 +40,6 @@
     // cuando entre a localhost:8081/ abrira la siguiente pagina
     app.get( '/', function( req, res ){
       routeViews( 'login', 'login' );
-      console.log( "PARAMETRO GET: "+JSON.stringify( req.params ) );
       if( JSON.stringify( req.params ) === '{}' )
         res.render('login_view');
     });
@@ -52,7 +51,6 @@
     //login
     app.post( '/login',function( req, res ){
       controller.llamarA_( 'usuarioController', 'usuario', 'login', req.body, req, res );
-      controller.llamarA_( 'usuarioController', 'usuario', 'llenado_cookie', req.body, req, res );
       routeViews( 'panel','usuario' );
     });
     //URL para agregar a la db el usuario nuevo

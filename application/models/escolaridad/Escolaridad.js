@@ -22,8 +22,8 @@
       freezeTableName: true,
       tableName: 'Escolaridad'
     });
-    escolaridad.associate = function( models ){
+    /*escolaridad.associate = function( models ){
       escolaridad.hasMany( models.Usuario );
-    }
+    };*/
     return escolaridad;
   }
