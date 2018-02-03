@@ -11,6 +11,7 @@
       <title>Panel de control</title>
   </head>
   <body>
+  {{#if "logueado.comprobado == 1" }}
     <div class="container-fluid">
       <div class="row"></div>
       <div class="row">
@@ -19,54 +20,92 @@
               <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Recursos humanos<span class="sr-only">(current)</span></a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item">Vacaciones</a>
-                  <a class="dropdown-item">Solicitud de préstamos</a>
-                  <a class="dropdown-item">Vale de compra</a>
-                  <a class="dropdown-item">Solicitud de permisos</a>
-                  <a class="dropdown-item">Recibo de nómina</a>
-                  <a class="dropdown-item">Requisición de vacantes</a>
-                  <a class="dropdown-item">Reloj checador</a>
-                  <a class="dropdown-item">Kardex</a>
-                  <a class="dropdown-item">Plataforma de cursos</a>
+                  <a class="dropdown-item" href="#">Vacaciones</a>
+                  <a class="dropdown-item" href="#">Solicitud de préstamos</a>
+                  <a class="dropdown-item" href="#">Vale de compra</a>
+                  <a class="dropdown-item" href="#">Solicitud de permisos</a>
+                  <a class="dropdown-item" href="#">Recibo de nómina</a>
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.acceso == 'Analista de recursos humanos' || logueado.wdepa == '11'"}}
+                    <a class="dropdown-item" href="#">Requisición de vacantes</a>
+                    <a class="dropdown-item" href="#">Reloj checador</a>
+                    <a class="dropdown-item" href="#">Kardex</a>
+                    <a class="dropdown-item" href="#">Plataforma de cursos</a>
+                  {{/if}}
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.wdepa == 11"}}
+                    <a class="dropdown-item" href="#">Gerente de RH</a>
+                  {{/if}}
                 </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contabilidad</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Mercadotenia</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contabilidad<span class="sr-only">(current)</span></a>
+                <div class="dropdown-menu">
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.wdepa == 9"}}
+                    <a class="dropdown-item" href="#">Gerente de contabilidad</a>
+                  {{/if}}
+                </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Credito y cobranza</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mercadotenia<span class="sr-only">(current)</span></a>
+                <div class="dropdown-menu">
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.wdepa == 10"}}
+                    <a class="dropdown-item" href="#">Gerente de mercadotecnia</a>
+                  {{/if}}
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Credito y cobranza<span class="sr-only">(current)</span></a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Prospectos</a>
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.wdepa == 12"}}
+                    <a class="dropdown-item" href="#">Gerente de credito y cobranza</a>
+                  {{/if}}
                 </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Ventas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Logistica</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Compras</a>
-              </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tecnologias de la información</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ventas<span class="sr-only">(current)</span></a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item">Ticket's&nbsp;<span class="badge badge-dark">0</span></a>
-                  <a class="dropdown-item">Requisición&nbsp;<span class="badge badge-dark">0</span></a>
-                  <a class="dropdown-item">Equipos</a>
-                  <a class="dropdown-item">Solicitudes&nbsp;<span class="badge badge-dark">0</span></a>
-                  <a class="dropdown-item">Soporte</a>
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.wdepa == 14"}}
+                    <a class="dropdown-item" href="#">Gerente de ventas</a>
+                  {{/if}}
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img alt="Hola" class="img-fluid rounded-circle" src="{{obj.mini}}"></a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Logistica<span class="sr-only">(current)</span></a>
+                <div class="dropdown-menu">
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.wdepa == 15"}}
+                    <a class="dropdown-item" href="#">Gerente de logistica</a>
+                  {{/if}}
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Compras<span class="sr-only">(current)</span></a>
+                <div class="dropdown-menu">
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.wdepa == 16"}}
+                    <a class="dropdown-item" href="#">Gerente de compras</a>
+                  {{/if}}
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tecnologias de la información<span class="sr-only">(current)</span></a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Ticket's&nbsp;<span class="badge badge-dark">0</span></a>
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'Analista de sistemas' || logueado.acceso == 'Auxiliar de metodos y procedimientos' || logueado.acceso == 'gerente' || logueado.wdepa == 12"}}
+                    <a class="dropdown-item" href="#">Requisición&nbsp;<span class="badge badge-dark">0</span></a>
+                    <a class="dropdown-item" href="#">Equipos</a>
+                    <a class="dropdown-item" href="#">Solicitudes&nbsp;<span class="badge badge-dark">0</span></a>
+                    <a class="dropdown-item" href="#">Soporte</a>
+                  {{/if}}
+                  {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.wdepa == 13"}}
+                    <a class="dropdown-item" href="#">Gerente de TI</a>
+                  {{/if}}
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img alt="Hola" class="img-fluid rounded-circle" src="{{logueado.mini}}"><span class="sr-only">(current)</span></a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Datos generales</a>
                   <a class="dropdown-item" href="#">Directorio</a>
-                  <a class="dropdown-item" href="#">Cerrar sesion</a>
+                  <a class="dropdown-item" href="/adiosVaquero">Cerrar sesion</a>
                 </div>
               </li>
             </ul>
@@ -101,9 +140,9 @@
           <div class="col">
             <h5>Bienvenido</h5>
             <ul class="list-inline">
-              <li class="list-inline-item"> <span class="badge badge-info">{{obj.nombre}}</span></li>
-              <li class="list-inline-item"> <span class="badge badge-info">{{obj.num}}</span> </li>
-              <li class="list-inline-item"> <span class="badge badge-info">{{obj.correo}}</span> </li>
+              <li class="list-inline-item"> <span class="badge badge-info">{{logueado.nombre}}</span></li>
+              <li class="list-inline-item"> <span class="badge badge-info">{{logueado.num}}</span> </li>
+              <li class="list-inline-item"> <span class="badge badge-info">{{logueado.correo}}</span> </li>
             </ul>
           </div>
           <!-- ./third column-->
@@ -113,5 +152,6 @@
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+  {{/if}}
   </body>
 </html>

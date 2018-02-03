@@ -106,7 +106,7 @@
           include:[
             {
               model: models.Departamento,
-              attributes:['departamento']
+              attributes:['idDepartamento','departamento']
             }
           ]
         },{
@@ -125,9 +125,13 @@
                 mini: '/preview/'+element.nombre_completo.trim()+'thumb.jpg',
                 num: element.numeroEmpleado,
                 correo: element.correo,
-                comprobado: comprobado
+                comprobado: element.aceptado,
+                acceso: element.Acceso.nombreAcceso,
+                departamento: element.Puesto.Departamento.departamento,
+                wdepa: element.Puesto.Departamento.idDepartamento
               };
-              res.render('panelTodo',{obj:obj});
+              res.cookie( 'logueado',obj );
+              res.render('panelTodo', req.cookies);
             }else{
               console.log("Por el momento, el equipo aun no ha aceptado su solicitud");
             }

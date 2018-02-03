@@ -17,6 +17,7 @@
     const fileup        =       require( 'express-fileupload' );
     const thumb         =       require( 'node-thumbnail' ).thumb;
     const cookie        =       require( 'cookie-parser' );
+    const sessions      =       require( 'express-session' );
 
     //configuracion para cargar la carpeta donde se encontraran los archivos estaticos
       app.use( '/', express.static( path.join( __dirname, '../src/assets' ) ));
@@ -24,6 +25,12 @@
       app.use( bodyParser.urlencoded( { extended: true } ) );
       app.use( fileup() );
       app.use( cookie() );
+      app.use( sessions({
+        secret:'911 F3rr3t3r14@ para todos',
+        resave: false,
+        saveUninitialized: true,
+        cookie:{ secure:false }
+      }));
 
     /**
        * Esta funcion, es para decirle que plantilla tomara, y cual vista debe de usar
@@ -51,6 +58,7 @@
     //login
     app.post( '/login',function( req, res ){
       controller.llamarA_( 'usuarioController', 'usuario', 'login', req.body, req, res );
+      console.log("COOKIES: "+JSON.stringify( req.cookies ) );
       routeViews( 'panel','usuario' );
     });
     //URL para agregar a la db el usuario nuevo
@@ -59,9 +67,9 @@
       if( !req.files )
         return res.status( 400 ).send( 'No files were uploaded.' );
       let file = req.files.fotoUp;
-      file.mv( __dirname + '/../src/assets/fotos/'+req.body.nombreUsuario+'.jpg', function( err ){
+      file.mv( __dirname + '/../src/assets/fotos/'+req.body.nombreUsuario.trim()+'.jpg', function( err ){
         thumb({
-          source: __dirname + '/../src/assets/fotos/'+req.body.nombreUsuario+'.jpg',
+          source: __dirname + '/../src/assets/fotos/'+req.body.nombreUsuario.trim()+'.jpg',
           destination: __dirname + '/../src/assets/preview',
           suffix: 'thumb',
           digest: false,
@@ -73,6 +81,7 @@
         });
       });
     });
+    //Destruye session,
     // cuando se intente entrar a una ruta, que no se este especificando en este modulo, mandara al siguiente error
     app.get( '*', function( req, res ){
       res.status( 404 ).send( "What??? You don´t have power here!!!." );
