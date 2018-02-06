@@ -29,7 +29,8 @@
         secret:'911 F3rr3t3r14@ para todos',
         resave: false,
         saveUninitialized: true,
-        cookie:{ secure:false }
+        cookie:{ secure:false,expires:8000 },
+        maxAge: 8000
       }));
 
     /**
@@ -58,7 +59,6 @@
     //login
     app.post( '/login',function( req, res ){
       controller.llamarA_( 'usuarioController', 'usuario', 'login', req.body, req, res );
-      console.log("COOKIES: "+JSON.stringify( req.cookies ) );
       routeViews( 'panel','usuario' );
     });
     //URL para agregar a la db el usuario nuevo
@@ -81,7 +81,13 @@
         });
       });
     });
-    //Destruye session,
+    //Destruye session y la cookie
+    app.get( '/adiosVaquero', function( req, res ){
+      res.clearCookie('logueado');
+      req.session.destroy;
+      res.redirect( '/' );
+    });
+
     // cuando se intente entrar a una ruta, que no se este especificando en este modulo, mandara al siguiente error
     app.get( '*', function( req, res ){
       res.status( 404 ).send( "What??? You don´t have power here!!!." );
