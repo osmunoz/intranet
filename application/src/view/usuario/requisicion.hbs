@@ -1,0 +1,214 @@
+<div class="container-fluid"><br>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Requisición</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Estatus</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
+    <form action="/requi" method="POST" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col">
+          <img class="rounded img-fluid float-right" src="/img/user.png" />
+        </div>
+        <div class="col">
+          <label for="picApic">Cargar foto</label>
+          <input type="file" id="picApic" class="float-left form-control" name="upApic" />
+        </div>
+        <div class="col">
+          <label for="fecha">Fecha de ingreso</label>
+          <input type="date" class="form-control" name="fecha" id="fecha" placeholder="Fecha de ingreso" />
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="form-row">
+        <div class="col"></div>
+        <div class="col">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo" />
+        </div>
+        <div class="col">
+          <label for="numEmp">Número empleado</label>
+          <input type="text" class="form-control" id="numEmp" name="numeroEmpleado" placeholder="No. Empleado" />
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <label for="domicilio">Domicilio</label>
+          <input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Calle" />
+        </div>
+        <div class="col">
+          <label for="numDom">No.</label>
+          <input type="text" class="form-control" id="numDom" name="numDom" placeholder="No." />
+        </div>
+        <div class="col">
+          <label for="col">Colonia</label>
+          <input type="text" class="form-control" id="col" name="col" placeholder="Colonia" />
+        </div>
+        <div class="col">
+          <label for="cp">C.P.</label>
+          <input type="text" class="form-control" id="cp" name="cp" placeholder="C.P." />
+        </div>
+      </div><br />
+      <div class="form-row">
+        <div class="col">
+          <h5>Sistemas</h5>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="equipo"/>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Equipo de computo</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="windows" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Usuario y contraseña windows</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="correo" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Extensión telefonica</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="sai" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Usuario y contraseña SAI</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="zona" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Registro de zona de ventas</span>
+          </label>
+        </div>
+        <div class="col">
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="ext" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Clave llamadas</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="web" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Usuario y contraseña web</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="skype" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Clave llamadas</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="intelisis" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Usuario y contraseña intelisis</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="numVende" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Número de vendedor</span>
+          </label>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <h5>Administración</h5>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="auto" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Contrato de auto</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="laptop" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Contrato de laptop</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="celular" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Contrato de celular</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <h5>Credito y cobranza</h5>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="auxCredito" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Asignación de auxiliar de credito</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="cobro" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Asignación de recibos de cobro</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="muestras" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Alta del vendedor como cliente(muestras)</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <h5>Ventas</h5>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="ventas" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Asignación de auxiliar de ventas</span>
+          </label>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="areaVenta" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Asignación de área de ventas</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <h5>Almacen</h5>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="almacen" />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Asignación de folio de garantias y dev</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col"></div>
+        <div class="col">
+          <button type="submit" class="form-control btn btn-primary">Requerir</button>
+        </div>
+        <div class="col">
+          <button type="button" class="form-control btn btn-danger">Cancelar</button>
+        </div>
+        <div class="col"></div>
+      </div>
+    </form>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"><center>No. Empleado</center></th>
+                <th scope="col"><center>Nombre</center></th>
+                <th scope="col"><center>Area</center></th>
+                <th scope="col"><center>Fecha ingreso</center></th>
+                <th scope="col"><center>Puesto</center></th>
+                <th scope="col"><center>Estatus</center></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><br /><br /><br /><br /><br />

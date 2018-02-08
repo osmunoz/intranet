@@ -15,6 +15,7 @@
         acquire: 30000,
         idle: 10000
       },
+      logging: false,
       operatorsAliases: true
     });
     const sequelizeUsuario = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
@@ -26,6 +27,7 @@
         acquire: 30000,
         idle: 10000
       },
+      logging: false,
       operatorsAliases: true
     });
     const sequelizeProspecto = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
@@ -37,6 +39,7 @@
         acquire: 30000,
         idle: 10000
       },
+      logging: false,
       operatorsAliases: true
     });
     const sequelizeExamen = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
@@ -48,6 +51,7 @@
         acquire: 30000,
         idle: 10000
       },
+      logging: false,
       operatorsAliases: true
     });
     const sequelizeEstatus = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
@@ -59,6 +63,7 @@
         acquire: 30000,
         idle: 10000
       },
+      logging: false,
       operatorsAliases: true
     });
     const sequelizeEscolaridad = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
@@ -70,6 +75,7 @@
         acquire: 30000,
         idle: 10000
       },
+      logging: false,
       operatorsAliases: true
     });
     const sequelizeDepartamento = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
@@ -81,6 +87,7 @@
         acquire: 30000,
         idle: 10000
       },
+      logging: false,
       operatorsAliases: true
     });
     const sequelizeAcceso = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
@@ -92,6 +99,7 @@
         acquire: 30000,
         idle: 10000
       },
+      logging: false,
       operatorsAliases: true
     });
 

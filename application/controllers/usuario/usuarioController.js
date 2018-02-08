@@ -7,7 +7,7 @@
   function index( object, req, res ){
     models.Puesto.findAll({}).then( function( puestos ){
       models.Escolaridad.findAll({}).then( function( escuela ){
-        models.Departamento.findAll({}).then( function( departamento ){console.log("Uno");
+        models.Departamento.findAll({}).then( function( departamento ){
           res.render( 'addingUser', { puesto: puestos, escuela: escuela, departamento: departamento } );
         });
       });
@@ -118,7 +118,7 @@
       if( JSON.stringify( encontrado ) != '[]' ){
         encontrado.forEach( function( element ){
           if( element.password.trim() === pass ){
-            if( element.aceptado === 1 ){
+            if( element.aceptado === 1 ){console.log("AQUI");
               comprobado = true;
               obj ={
                 nombre: element.nombre_completo,
@@ -131,7 +131,7 @@
                 wdepa: element.Puesto.Departamento.idDepartamento
               };
               res.cookie( 'logueado',obj );
-              res.render('panelTodo', req.cookies);
+              res.render('panelTodo',req.cookies);
             }else{
               console.log("Por el momento, el equipo aun no ha aceptado su solicitud");
             }
@@ -141,26 +141,80 @@
     });
   }
   /**
-    * Esta funcion hace llenar un JSON, para llenar la cookie
-    * y así usarla como se desee
-    * @param {user}
-    * @param {pass}
-    * @return JSON
-    * @throws sequelize error
+    * En esta funcion, se va a moder ver la información de la cuenta del usuario, se cargara todo en formularios
+    * @param object
+    * @param res
+    * @param req
   */
-  function llenado_cookie( user, pass ){
-    let galleta = {};
-    models.Usuario.findAll({
-
-    }).then( function( data ){
-      return data;
-      /*data.forEach( function( element ){
-        galleta = element;
+  function cuenta( object, req, res ){
+    models.Usuario.findAll().then( function( users ){
+      models.Puesto.findAll({
+        attributes:[ 'idPuesto', 'tipoPuesto','idDepartamento' ]
+      }).then( function( puestos ){
+        models.Escolaridad.findAll({
+          attributes:[ 'idEscolaridad','tipoEscolaridad' ]
+        }).then( function( escuela ){
+          models.Departamento.findAll({
+            attributes:[ 'idDepartamento', 'departamento' ]
+          }).then( function( departamento ){
+            let usuario = {};
+            users.forEach( function( data ){
+              usuario = {
+                nombre: data.nombre_completo.trim(),
+                pic: '/preview/'+data.nombre_completo.trim()+'thumb.jpg',
+                numero: data.numeroEmpleado,
+                direccion: data.direccion.trim(),
+                telefono: data.telefono.trim(),
+                rfc: data.RFC.trim(),
+                curp: data.CURP.trim(),
+                imss: data.numeroIMSS.trim(),
+                tipoSangre: data.tipoSangre,
+                ext: data.ext_tel.trim(),
+                correo: data.correo.trim()
+              };
+            });
+            res.render( 'cuenta', {  logueado: JSON.stringify( req.cookies.logueado ), usuario:usuario, puesto: puestos, escuela: escuela, departamento: departamento } );
+          });
+        });
       });
-      return galleta;*/
     });
   }
+  function requisicion( object, req, res ){
+    console.log("Requisicion: "+ JSON.stringify( req.body ) );
+    let equipo = ( req.body.equipo === "on" )?1:0;
+    let windows = ( req.body.windows === "on" )?1:0;
+    let correo = ( req.body.correo === "on" )?1:0;
+    let sai = ( req.body.sai === "on" )?1:0;
+    let zona = ( req.body.zona === "on" )?1:0;
+    let ext = ( req.body.ext === "on" )?1:0;
+    let web = ( req.body.web === "on" )?1:0;
+    let skype = ( req.body.skype === "on" )?1:0;
+    let intelisis = ( req.body.intelisis === "on" )?1:0;
+    let numVende = ( req.body.numVende === "on" )?1:0;
+    let auto = ( req.body.auto === "on" )?1:0;
+    let laptop = ( req.body.laptop === "on" )?1:0;
+    let celular = ( req.body.celular === "on" )?1:0;
+    let auxCredito = ( req.body.auxCredito === "on" )?1:0;
+    let cobro = ( req.body.cobro === "on" )?1:0;
+    let muestras = ( req.body.muestras === "on" )?1:0;
+    let ventas = ( req.body.ventas === "on" )?1:0;
+    let areaVenta = ( req.body.areaVenta === "on" )?1:0;
+    let almacen = ( req.body.almacen === "on" )?1:0;
+    console.log("Equipo "+equipo);
+    console.log("Windows "+windows);
+    console.log("Correo "+correo);
+    console.log("SAI "+sai);
+    console.log("Zona "+zona);
+    console.log("Ext "+ext);
+    console.log("Web "+web);
+    console.log("numVende "+numVende);
+    console.log("Auto: "+auto);
+    console.log("Ventas "+ventas);
+    res.redirect('requisicion');
+  }
   //Se exportan las funciones
+  exports.requisicion = requisicion;
   exports.index = index;
   exports.registro = registro;
   exports.login = login;
+  exports.cuenta = cuenta;

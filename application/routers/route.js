@@ -29,8 +29,12 @@
         secret:'911 F3rr3t3r14@ para todos',
         resave: false,
         saveUninitialized: true,
-        cookie:{ secure:false,expires:8000 },
-        maxAge: 8000
+        cookie:{
+          path:['/login','/cuenta'],
+          secure:false,
+          httpOnly: true,
+          maxAge: 8000
+        }
       }));
 
     /**
@@ -61,6 +65,10 @@
       controller.llamarA_( 'usuarioController', 'usuario', 'login', req.body, req, res );
       routeViews( 'panel','usuario' );
     });
+    app.get( '/cuenta', function( req, res ){
+      controller.llamarA_( 'usuarioController', 'usuario','cuenta', req.body, req, res  );
+      routeViews( 'panel','usuario' );
+    });
     //URL para agregar a la db el usuario nuevo
     app.post( '/agregar', function( req, res ){
       console.log( req.files );
@@ -81,10 +89,18 @@
         });
       });
     });
+    app.get( '/requisicion',function( req, res ){
+      routeViews( 'panel', 'usuario' );
+      res.render( 'requisicion',req.cookies );
+    });
+    app.post( '/requi', function( req, res ){
+      console.log("SESSION: "+JSON.stringify( req.session ) );
+      controller.llamarA_( 'usuarioController','usuario','requisicion', req.body, req, res );
+    });
     //Destruye session y la cookie
     app.get( '/adiosVaquero', function( req, res ){
-      res.clearCookie('logueado');
-      req.session.destroy;
+      res.clearCookie('logueado',{path:'/login'});
+      //req.session.destroy;
       res.redirect( '/' );
     });
 

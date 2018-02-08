@@ -26,7 +26,7 @@
                   <a class="dropdown-item" href="#">Solicitud de permisos</a>
                   <a class="dropdown-item" href="#">Recibo de nómina</a>
                   {{#if "logueado.acceso == 'dios' || logueado.acceso == 'gerente' || logueado.acceso == 'Analista de recursos humanos' || logueado.wdepa == '11'"}}
-                    <a class="dropdown-item" href="#">Requisición de vacantes</a>
+                    <a class="dropdown-item" href="/requisicion">Requisición de vacantes</a>
                     <a class="dropdown-item" href="#">Reloj checador</a>
                     <a class="dropdown-item" href="#">Kardex</a>
                     <a class="dropdown-item" href="#">Plataforma de cursos</a>
@@ -103,7 +103,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img alt="Hola" class="img-fluid rounded-circle" src="{{logueado.mini}}"><span class="sr-only">(current)</span></a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Cuenta</a>
+                  <a class="dropdown-item" href="/cuenta">Cuenta</a>
                   <a class="dropdown-item" href="#">Directorio</a>
                   <a class="dropdown-item" href="/adiosVaquero">Cerrar sesion</a>
                 </div>
