@@ -118,13 +118,13 @@
       if( JSON.stringify( encontrado ) != '[]' ){
         encontrado.forEach( function( element ){
           if( element.password.trim() === pass ){
-            if( element.aceptado === 1 ){console.log("AQUI");
+            if( element.aceptado === 1 ){
               comprobado = true;
               obj ={
                 nombre: element.nombre_completo,
                 mini: '/preview/'+element.nombre_completo.trim()+'thumb.jpg',
                 num: element.numeroEmpleado,
-                correo: element.correo,
+                correo: element.correo.trim(),
                 comprobado: element.aceptado,
                 acceso: element.Acceso.nombreAcceso,
                 departamento: element.Puesto.Departamento.departamento,
@@ -180,7 +180,7 @@
     });
   }
   function requisicion( object, req, res ){
-    console.log("Requisicion: "+ JSON.stringify( req.body ) );
+    let requis = req.cookies.logueado.correo+'; '+'soporte@indar.com.mx';
     let equipo = ( req.body.equipo === "on" )?1:0;
     let windows = ( req.body.windows === "on" )?1:0;
     let correo = ( req.body.correo === "on" )?1:0;
@@ -200,20 +200,93 @@
     let ventas = ( req.body.ventas === "on" )?1:0;
     let areaVenta = ( req.body.areaVenta === "on" )?1:0;
     let almacen = ( req.body.almacen === "on" )?1:0;
-    console.log("Equipo "+equipo);
-    console.log("Windows "+windows);
-    console.log("Correo "+correo);
-    console.log("SAI "+sai);
-    console.log("Zona "+zona);
-    console.log("Ext "+ext);
-    console.log("Web "+web);
-    console.log("numVende "+numVende);
-    console.log("Auto: "+auto);
-    console.log("Ventas "+ventas);
-    res.redirect('requisicion');
+    let domicilio = req.body.domicilio.trim()+' '+req.body.numDom+' '+req.body.coli.trim()+' '+req.body.ciudad.trim()+' '+req.body.estado.trim();
+    models.Requisicion.create({
+      idProspecto: 0,
+      noEmpleadoHizo: req.cookies.logueado.num,
+      fecha: req.body.fecha,
+      nombreCompleto: req.body.nombre.trim(),
+      noEmpleado: req.body.numeroEmpleado,
+      puesto: req.body.puesto.trim(),
+      area: req.body.areas.trim(),
+      urlFoto: '/preview/'+req.body.nombre.trim()+'pre.jpg',
+      domicilio: domicilio,
+      gcia: req.body.gcia.trim(),
+      depto: req.body.deptos.trim(),
+      cambioDepto: req.body.cambios.trim(),
+      equipo: equipo,
+      windows: windows,
+      correo: correo,
+      sai: sai,
+      zona: zona,
+      ext: ext,
+      web: web,
+      skype: skype,
+      intelisis: intelisis,
+      numVendedor: numVende,
+      auto: auto,
+      laptop: laptop,
+      celular: celular,
+      auxCredito: auxCredito,
+      cobro: cobro,
+      muestras: muestras,
+      venta: ventas,
+      areaVenta: areaVenta,
+      almacen: almacen,
+      estatus:0
+    }).then( function( hecho ){
+      let correos = req.cookies.correo+';'+'soporte@indar.com.mx';
+      if( hecho ){
+        emails.send( requis, 'Requisicion', res );
+        res.redirect('/requisicion');
+      }
+    });
+  }
+  function datosRequisicion( object, req, res ){
+    let datos = {};
+    let regresa = models.Requisicion.findAll({
+      where:{ estatus: 0 },
+      attributes: ['idRequiere','noEmpleadoHizo','noEmpleado','urlFoto','nombreCompleto','puesto','area','estatus']
+    }).then( function( data ){
+        regresa = data;
+    });
+    console.log("Regresa: "+JSON.stringify( regresa ) );
+    return regresa;
+  }
+  function llenado( object, req, res ){
+    /*models.Llenado.create({
+      idRequisicion:,
+      usuarioWindows:,
+      passWindows:,
+      correo:,
+      passCorreo:,
+      ext:,
+      extClave:,
+      equipoCel:,
+      nCelular:,
+      usuarioERP:,
+      passERP:,
+      usuariSAI:,
+      passSAI:,
+      numeroVendedor:,
+      zona:,
+      contratoAuto:,
+      contratoLaptop:,
+      contratoCel:,
+      auxCredito:,
+      recibosCobro:,
+      vendedorCliente:,
+      auxVentas:,
+      areaVentas:,
+      garantiasDev:,
+    }).then( function( hecho ){
+
+    });*/
   }
   //Se exportan las funciones
   exports.requisicion = requisicion;
+  exports.datosRequisicion = datosRequisicion;
+  exports.llenado = llenado;
   exports.index = index;
   exports.registro = registro;
   exports.login = login;

@@ -95,7 +95,31 @@
     });
     app.post( '/requi', function( req, res ){
       console.log("SESSION: "+JSON.stringify( req.session ) );
-      controller.llamarA_( 'usuarioController','usuario','requisicion', req.body, req, res );
+      console.log( req.files );
+      if( !req.files )
+        return res.status( 400 ).send( 'No files were uploaded.' );
+      let file = req.files.upApic;
+      console.log("ALGO: "+file);
+      file.mv( __dirname + '/../src/assets/fotos/'+req.body.nombre.trim()+'.jpg', function( err ){
+        thumb({
+          source: __dirname + '/../src/assets/fotos/'+req.body.nombre.trim()+'.jpg',
+          destination: __dirname + '/../src/assets/preview',
+          suffix: 'pre',
+          digest: false,
+          width: 100,
+          overwrite: true
+        },function( files, err, stdout, stderr ){
+          controller.llamarA_( 'usuarioController','usuario','requisicion', req.body, req, res );
+          routeViews( 'panel', 'usuario' );
+        });
+      });
+    });
+    app.get( '/reqSoli', function( req, res ){
+      routeViews( 'panel','usuario' );
+      res.render( 'llenado', req.cookies );
+    });
+    app.post('/datos',function( req, res ){
+      controller.llamarA_( 'usuarioController','usuario','datosRequisicion', req.body, req, res );
     });
     //Destruye session y la cookie
     app.get( '/adiosVaquero', function( req, res ){

@@ -102,6 +102,30 @@
       logging: false,
       operatorsAliases: true
     });
+    const sequelizeRequisicion = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
+      host: '192.168.87.10',
+      dialect: 'mssql',
+      pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+      },
+      logging: false,
+      operatorsAliases: true
+    });
+    const sequelizeLlenado = new Sequelize( 'Intranet', 'sa', '7Ind4r7',{
+      host: '192.168.87.10',
+      dialect: 'mssql',
+      pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+      },
+      logging: false,
+      operatorsAliases: true
+    });
 
     fs.readdirSync( __dirname + '/puesto' ).filter( function( file ){
       return ( file.indexOf( '.' ) !== 0 );
@@ -149,6 +173,18 @@
       return ( file.indexOf( '.' ) !== 0 );
     }).forEach( function( file ){
       var model = sequelizeAcceso[ 'import' ]( path.join( __dirname +'/acceso', file ) );
+      db[ model.name ] = model;
+    });
+    fs.readdirSync( __dirname + '/requisicion' ).filter( function( file ){
+      return ( file.indexOf( '.' ) !== 0 );
+    }).forEach( function( file ){
+      var model = sequelizeRequisicion[ 'import' ]( path.join( __dirname +'/requisicion', file ) );
+      db[ model.name ] = model;
+    });
+    fs.readdirSync( __dirname + '/llenado' ).filter( function( file ){
+      return ( file.indexOf( '.' ) !== 0 );
+    }).forEach( function( file ){
+      var model = sequelizeLlenado[ 'import' ]( path.join( __dirname +'/llenado', file ) );
       db[ model.name ] = model;
     });
     Object.keys( db ).forEach( function( modelName ){

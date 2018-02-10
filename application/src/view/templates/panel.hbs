@@ -90,7 +90,7 @@
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Ticket's&nbsp;<span class="badge badge-dark">0</span></a>
                   {{#if "logueado.acceso == 'dios' || logueado.acceso == 'Analista de sistemas' || logueado.acceso == 'Auxiliar de metodos y procedimientos' || logueado.acceso == 'gerente' || logueado.wdepa == 12"}}
-                    <a class="dropdown-item" href="#">Requisición&nbsp;<span class="badge badge-dark">0</span></a>
+                    <a class="dropdown-item" href="/reqSoli" id="soliReq">Requisición&nbsp;<span class="badge badge-dark">0</span></a>
                     <a class="dropdown-item" href="#">Equipos</a>
                     <a class="dropdown-item" href="#">Solicitudes&nbsp;<span class="badge badge-dark">0</span></a>
                     <a class="dropdown-item" href="#">Soporte</a>
@@ -152,6 +152,7 @@
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/requisicion/requisicion.js"></script>
   {{/if}}
   </body>
 </html>

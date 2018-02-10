@@ -82,6 +82,14 @@
             template: plantilla
           };
         break;
+        case 'Requisicion':
+          mailOptions = {
+            from: '"Intranet INDAR " <no-reply@indar.com.mx>',//Sender address
+            to: address,
+            subject: 'Solicitud de Requisicion',
+            template: plantilla
+          }
+        break;
       }
       // send mail with defined transport object
       let sending = nodemailer.createTransport( smtp( transporter ) );

@@ -11,51 +11,83 @@
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
     <form action="/requi" method="POST" enctype="multipart/form-data">
       <div class="row">
-        <div class="col">
-          <img class="rounded img-fluid float-right" src="/img/user.png" />
+        <div class="form-group col">
+          <img class="rounded img-fluid float-right" name="reqFoto" src="/img/user.png" />
         </div>
-        <div class="col">
+        <div class="form-group col">
           <label for="picApic">Cargar foto</label>
           <input type="file" id="picApic" class="float-left form-control" name="upApic" />
         </div>
-        <div class="col">
+        <div class="form-group col">
           <label for="fecha">Fecha de ingreso</label>
           <input type="date" class="form-control" name="fecha" id="fecha" placeholder="Fecha de ingreso" />
         </div>
         <div class="col"></div>
       </div>
       <div class="form-row">
-        <div class="col"></div>
-        <div class="col">
+        <div class="form-group col"></div>
+        <div class="form-group col">
           <label for="nombre">Nombre completo</label>
           <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo" />
         </div>
-        <div class="col">
+        <div class="form-group col">
           <label for="numEmp">Número empleado</label>
           <input type="text" class="form-control" id="numEmp" name="numeroEmpleado" placeholder="No. Empleado" />
         </div>
-        <div class="col"></div>
+        <div class="form-group col"></div>
       </div>
       <div class="form-row">
-        <div class="col">
+        <div class="form-group col">
+          <label for="puesto">Puesto</label>
+          <input type="text" class="form-control" id="puesto" name="puesto" placeholder="Puesto" />
+        </div>
+        <div class="form-group col">
+          <label for="areas">Area</label>
+          <input type="text" class="form-control" id="areas" name="areas" placeholder="Area" />
+        </div>
+        <div class="form-group col">
+          <label for="gcia">GCIA</label>
+          <input type="text" class="form-control" id="gcia" name="gcia" placeholder="GCIA" />
+        </div>
+        <div class="form-group col">
+          <label for="deptos">DEPTO</label>
+          <input type="text" class="form-control" id="deptos" name="deptos" placeholder="DEPTOS" />
+        </div>
+        <div class="form-group col">
+          <label for="cambios">Cambio de puesto</label>
+          <input type="text" class="form-control" id="cambios" name="cambios" placeholder="Cambio de puesto" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
           <label for="domicilio">Domicilio</label>
           <input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Calle" />
         </div>
-        <div class="col">
+        <div class="form-group col">
           <label for="numDom">No.</label>
           <input type="text" class="form-control" id="numDom" name="numDom" placeholder="No." />
         </div>
-        <div class="col">
-          <label for="col">Colonia</label>
-          <input type="text" class="form-control" id="col" name="col" placeholder="Colonia" />
+        <div class="form-group col">
+          <label for="coli">Colonia</label>
+          <input type="text" class="form-control" id="coli" name="coli" placeholder="Colonia" />
         </div>
-        <div class="col">
+        <div class="form-group col">
           <label for="cp">C.P.</label>
           <input type="text" class="form-control" id="cp" name="cp" placeholder="C.P." />
         </div>
       </div><br />
       <div class="form-row">
-        <div class="col">
+        <div class="form-group col">
+          <label for="estado">Estado</label>
+          <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" />
+        </div>
+        <div class="form-group col">
+          <label for="ciudad">Ciudad</label>
+          <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
           <h5>Sistemas</h5>
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="equipo"/>
@@ -83,7 +115,7 @@
             <span class="custom-control-description">Registro de zona de ventas</span>
           </label>
         </div>
-        <div class="col">
+        <div class="form-group col">
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="ext" />
             <span class="custom-control-indicator"></span>
@@ -97,7 +129,7 @@
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="skype" />
             <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Clave llamadas</span>
+            <span class="custom-control-description">Skype</span>
           </label>
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="intelisis" />
@@ -110,11 +142,11 @@
             <span class="custom-control-description">Número de vendedor</span>
           </label>
         </div>
-        <div class="col"></div>
-        <div class="col"></div>
+        <div class="form-group col"></div>
+        <div class="form-group col"></div>
       </div>
       <div class="form-row">
-        <div class="col">
+        <div class="form-group col">
           <h5>Administración</h5>
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="auto" />
@@ -134,7 +166,7 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="col">
+        <div class="form-group col">
           <h5>Credito y cobranza</h5>
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="auxCredito" />
@@ -154,7 +186,7 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="col">
+        <div class="form-group col">
           <h5>Ventas</h5>
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="ventas" />
@@ -169,7 +201,7 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="col">
+        <div class="form-group col">
           <h5>Almacen</h5>
           <label class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="almacen" />
@@ -179,14 +211,14 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="col"></div>
-        <div class="col">
+        <div class="form-group col"></div>
+        <div class="form-group col">
           <button type="submit" class="form-control btn btn-primary">Requerir</button>
         </div>
-        <div class="col">
+        <div class="form-group col">
           <button type="button" class="form-control btn btn-danger">Cancelar</button>
         </div>
-        <div class="col"></div>
+        <div class="form-group col"></div>
       </div>
     </form>
   </div>
